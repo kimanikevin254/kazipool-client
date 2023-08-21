@@ -94,7 +94,7 @@ export default function Page({ params }) {
                                 data.job.owner === userInfo._id ?
 
                                 <div className="flex w-fit mx-auto mt-4 gap-8">
-                                    <Link href={`/my-jobs/employer/edit/${job._id}`} className='px-4 py-2 rounded bg-blue-600 flex items-center gap-2 text-white z-20'>
+                                    <Link href={`/my-jobs/employer/edit/${data.job._id}`} className='px-4 py-2 rounded bg-blue-600 flex items-center gap-2 text-white z-20'>
                                         <FaRegEdit className='h-5 w-5' />
                                         <span>Edit</span>
                                     </Link>

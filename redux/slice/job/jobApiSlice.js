@@ -15,7 +15,8 @@ export const jobApiSlice = apiSlice.injectEndpoints({
             query: (id) => ({
                 url: `${JOB_URL}/${id}`,
                 credentials: "include"
-            })
+            }),
+            keepUnusedDataFor: 1
         }),
         getMyJobs: builder.query({
             query: () => ({
