@@ -31,8 +31,16 @@ export const jobApiSlice = apiSlice.injectEndpoints({
                 body: data,
                 credentials: 'include'
             })
+        }),
+        updateJob: builder.mutation({
+            query: (data) => ({
+                url: `${JOB_URL}/update/${data.id}`,
+                method: 'PUT',
+                body: data,
+                credentials: 'include'
+            })
         })
     })
 })
 
-export const { useGetAllJobsQuery, useGetAJobQuery, useGetMyJobsQuery, useCreateJobMutation } = jobApiSlice
+export const { useGetAllJobsQuery, useGetAJobQuery, useGetMyJobsQuery, useCreateJobMutation, useUpdateJobMutation } = jobApiSlice

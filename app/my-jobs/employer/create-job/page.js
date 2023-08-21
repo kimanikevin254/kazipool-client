@@ -141,7 +141,7 @@ export default function CreateJob(){
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                             >
-                                <option value="">Select the Job Type</option>
+                                <option value="">Select the Required Skill Level</option>
                                 {
                                     dropdown_options.skill_level_options.map((option, id) => (
                                         <option key={id} value={option}>{option}</option>

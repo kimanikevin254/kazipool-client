@@ -1,7 +1,7 @@
 'use client'
 
 import DashLayout from "@/components/dashboard/DashLayout";
-import JobCard from "@/components/dashboard/find-work/JobCard";
+import EmployerJobCard from "@/components/dashboard/my-jobs/employer/JobCard";
 import { useGetMyJobsQuery } from "@/redux/slice/job/jobApiSlice";
 import Link from "next/link";
 import { ClipLoader } from "react-spinners";
@@ -35,7 +35,7 @@ export default function EmployerJobs(){
                             <div className="mt-3 rounded border divide-y">
                                 {
                                     data && data.jobs.map(job => (
-                                        <JobCard key={job._id} job={job} />
+                                        <EmployerJobCard key={job._id} job={job} />
                                     ))
                                 }
                             </div>

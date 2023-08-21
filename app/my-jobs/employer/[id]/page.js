@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 import { FaRegEdit } from "react-icons/fa";
 import Link from "next/link";
 
-export default function Page({ params }) {
+export default function JObDetails({ params }) {
     const router = useRouter()
 
     const { data, isLoading, error } = useGetAJobQuery(params.id)
@@ -55,7 +55,7 @@ export default function Page({ params }) {
 
                                         <div className="py-3 flex gap-32">
                                             <div>
-                                                <p className="font-semibold text-sm">{data.job.compensation}</p>
+                                                <p className="font-semibold text-sm">$ {data.job.compensation}</p>
                                                 <p className="text-sm text-gray-500">Fixed-price</p>
                                             </div>
                                             <div>
@@ -90,26 +90,17 @@ export default function Page({ params }) {
                                 </div>
                             </div>
                             
-                            {
-                                data.job.owner === userInfo._id ?
+                            <div className="flex w-fit mx-auto mt-8 gap-6">
+                                <Link href={`/my-jobs/employer/edit/${data.job._id}`} className='px-4 py-2 rounded bg-blue-600 flex items-center gap-2 text-white z-20'>
+                                    <FaRegEdit className='h-5 w-5' />
+                                    <span>Edit</span>
+                                </Link>
 
-                                <div className="flex w-fit mx-auto mt-4 gap-8">
-                                    <Link href={`/my-jobs/employer/edit/${job._id}`} className='px-4 py-2 rounded bg-blue-600 flex items-center gap-2 text-white z-20'>
-                                        <FaRegEdit className='h-5 w-5' />
-                                        <span>Edit</span>
-                                    </Link>
-
-                                    <button className='px-4 py-2 rounded bg-red-600 flex items-center gap-2 text-white z-20'>
-                                        <BsFillTrashFill className='h-5 w-5' />
-                                        <span>Delete</span>
-                                    </button>
-                                </div> : 
-                                // {/* actions */}
-                                <div className="flex justify-between mt-4 gap-8">
-                                    <button onClick={() => applyForTheJob()} className="w-full bg-green-600 text-white py-3 rounded-full font-semibold">Apply Now</button>
-                                    <button className="w-full border-2 border-green-600 rounded-full font-semibold flex items-center justify-center gap-3"><BsSuitHeart color="green" className="h-4 w-4" /> <span>Save Job</span></button>
-                                </div>
-                            }
+                                <button className='px-4 py-2 rounded bg-red-600 flex items-center gap-2 text-white z-20'>
+                                    <BsFillTrashFill className='h-5 w-5' />
+                                    <span>Delete</span>
+                                </button>
+                            </div>
                         </div>
                 )
             }
