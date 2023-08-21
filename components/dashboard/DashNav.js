@@ -28,6 +28,7 @@ export default function DashNav(){
 
     // manage dropdown 
     const [showMenu, setShowMenu] = useState(false)
+    const [showProfileMenu, setShowProfileMenu] = useState(false)
     return (
         <div className='flex items-center justify-between'>
             <button className='cursor-pointer md:hidden'>
@@ -72,9 +73,17 @@ export default function DashNav(){
                             <input className="appearance-none block w-full border border-gray-200 rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="Search" />
                         </form>
 
-                        <button onClick={() => signout()} className='border rounded-full border-gray-200 p-2'>
-                            <BiUser className='w-8 h-8' />
-                        </button>
+                        
+                        <div onMouseEnter={() => setShowProfileMenu(!showProfileMenu)} onMouseLeave={() => setShowProfileMenu(false)} className='relative'>
+                            <div className='flex items-center gap-1 border rounded-full border-gray-200 p-2'>
+                                <BiUser className='w-8 h-8' />
+                                <AiFillCaretDown />
+                            </div>
+                            <div className={showProfileMenu ? 'absolute flex flex-col justify-start z-10 bg-white shadow-xl rounded py-2 w-36' : 'hidden'}>
+                                <Link href={'/my-jobs/employer'} className='px-6 py-2 block text-left hover:bg-green-600 hover:text-white'>My Profile</Link>
+                                <button onClick={() => signout()} className='px-6 py-2 block text-left hover:bg-green-600 hover:text-white'>Log Out</button>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
