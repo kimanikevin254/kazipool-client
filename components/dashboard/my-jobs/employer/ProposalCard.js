@@ -14,7 +14,7 @@ export default function ProposalCard({ proposal }){
                 <div className='flex gap-3'>
                     <Link href={`/my-jobs/employer/proposals/${proposal._id}`} className="border border-green-600 px-4 py-2 rounded w-fit">Review</Link>
  
-                    <Link href={'#'} className='px-4 py-2 rounded bg-blue-600 flex items-center gap-2 text-white z-20'>
+                    {/* <Link href={'#'} className='px-4 py-2 rounded bg-blue-600 flex items-center gap-2 text-white z-20'>
                         <BsFillCheckCircleFill className='h-5 w-5' />
                         <span>Accept</span>
                     </Link>
@@ -24,7 +24,7 @@ export default function ProposalCard({ proposal }){
                     <button className='px-4 py-2 rounded bg-red-600 flex items-center gap-2 text-white z-20'>
                         <AiOutlineStop className='h-5 w-5' />
                         <span>Reject</span>
-                    </button>
+                    </button> */}
                 </div>
             </div>
             <p><span className='text-xs text-gray-500 font-medium'>Created on {new Date(proposal.createdAt).toLocaleString()}</span></p>

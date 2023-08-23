@@ -40,8 +40,15 @@ export const jobApiSlice = apiSlice.injectEndpoints({
                 body: data,
                 credentials: 'include'
             })
+        }),
+        getJobsAssignedToMe: builder.query({
+            query: () => ({
+                url: `${JOB_URL}/assigned_to_me`,
+                credentials: 'include'
+            }),
+            keepUnusedDataFor: 1
         })
     })
 })
 
-export const { useGetAllJobsQuery, useGetAJobQuery, useGetMyJobsQuery, useCreateJobMutation, useUpdateJobMutation } = jobApiSlice
+export const { useGetAllJobsQuery, useGetAJobQuery, useGetMyJobsQuery, useCreateJobMutation, useUpdateJobMutation, useGetJobsAssignedToMeQuery } = jobApiSlice

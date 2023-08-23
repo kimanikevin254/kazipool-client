@@ -1,24 +1,19 @@
-import { BiDislike } from 'react-icons/bi'
-import { AiOutlineHeart } from 'react-icons/ai'
-import Link from 'next/link'
+import Link from "next/link";
+import { BiMessageDetail } from "react-icons/bi";
+import { BsFillTrashFill } from "react-icons/bs";
 
-export default function JobCard({ job }){
+export default function FreelancerJobCard({ job }){
     return (
-        <Link href={`find-work/jobs/${job._id}`} className='flex flex-col space-y-3 px-2 py-4'>
+        <div className='flex flex-col space-y-3 px-2 py-4 z-10'>
             <div className='flex items-center justify-between'>
                 {/* title */}
-                <p className='font-semibold'>{job.title}</p>
+                <Link href={`/my-jobs/freelancer/${job._id}`} className='font-semibold underline'>{job.title}</Link>
 
                 {/* actions */}
-                <div className='flex gap-3'>
-                    <button className='p-1 rounded-full border border-gray-200'>
-                        <BiDislike className='h-6 w-6' />
-                    </button>
-
-                    <button className='p-1 rounded-full border border-gray-200'>
-                        <AiOutlineHeart className='h-6 w-6' />
-                    </button>
-                </div>
+                <button className='px-4 py-2 rounded bg-green-600 flex items-center gap-2 text-white z-20'>
+                    <BiMessageDetail className='h-5 w-5' />
+                    <span>Chat the Employer</span>
+                </button>
             </div>
 
             <p><span className='text-xs text-gray-600 font-semibold'>Fixed-price</span> - <span className='text-xs text-gray-500 font-medium'>Posted on {new Date(job.createdAt).toLocaleString()}</span></p>
@@ -36,6 +31,6 @@ export default function JobCard({ job }){
             </div>
 
             <p className='text-sm'>{job.description.length > 40 ? `${job.description.slice(0,40)}..` : job.description}</p>
-        </Link>
+        </div>
     )
 }

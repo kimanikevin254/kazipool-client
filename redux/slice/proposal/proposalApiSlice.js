@@ -26,9 +26,17 @@ export const proposalApiSlice = apiSlice.injectEndpoints({
                 credentials: 'include',
             }),
             keepUnusedDataFor: 1
+        }),
+        acceptProposal: builder.mutation({
+            query: (data) => ({
+                url: `${PROPOSAL_URL}/accept`,
+                method: 'POST',
+                body: data,
+                credentials: 'include'
+            })
         })
     })
 })
 
-export const { useCreateProposalMutation, useGetJobProposalsQuery, useGetProposalQuery } = proposalApiSlice
+export const { useCreateProposalMutation, useGetJobProposalsQuery, useGetProposalQuery, useAcceptProposalMutation } = proposalApiSlice
 

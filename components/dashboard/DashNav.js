@@ -49,7 +49,7 @@ export default function DashNav(){
                             <AiFillCaretDown />
                         </button>
                         <div className={showMenu ? 'absolute flex flex-col justify-start z-10 bg-white shadow-xl rounded py-2' : 'hidden'}>
-                            <button className='px-6 py-2 block text-left hover:bg-green-600 hover:text-white'>Freelancer</button>
+                            <Link href={'/my-jobs/freelancer'} className='px-6 py-2 block text-left hover:bg-green-600 hover:text-white'>Freelancer</Link>
                             <Link href={'/my-jobs/employer'} className='px-6 py-2 block text-left hover:bg-green-600 hover:text-white'>Employer</Link>
                         </div>
                     </div>

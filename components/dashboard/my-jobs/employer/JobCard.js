@@ -10,20 +10,32 @@ export default function EmployerJobCard({ job }){
                 <Link href={`/my-jobs/employer/${job._id}`} className='font-semibold underline'>{job.title}</Link>
 
                 {/* actions */}
-                
-                <div className='flex gap-3'>
-                    <Link href={`/my-jobs/employer/proposals/job/${job._id}`} className="border border-green-600 px-4 py-2 rounded w-fit"><span>Proposals: </span><span>{job.proposals.length}</span></Link>
+                    {
+                        job.assigned_to && job.assigned_to !== null ?
 
-                    <Link href={`/my-jobs/employer/edit/${job._id}`} className='px-4 py-2 rounded bg-blue-600 flex items-center gap-2 text-white z-20'>
-                        <FaRegEdit className='h-5 w-5' />
-                        <span>Edit</span>
-                    </Link>
+                        <div  className='flex items-center gap-3'>
+                            <p className="border border-green-600 px-4 py-2 rounded w-fit">In progress</p>
+                            <p className="font-semibold">Assigned to: {job.assigned_to.name}</p>
+                        </div> :
 
-                    <button className='px-4 py-2 rounded bg-red-600 flex items-center gap-2 text-white z-20'>
-                        <BsFillTrashFill className='h-5 w-5' />
-                        <span>Delete</span>
-                    </button>
-                </div>
+                        <div className='flex gap-3'>
+                            <Link href={`/my-jobs/employer/proposals/job/${job._id}`} className="border border-green-600 px-4 py-2 rounded w-fit"><span>Proposals: </span><span>{job.proposals.length}</span></Link>
+
+                        {/* <div>
+
+                        </div> */}
+
+                            <Link href={`/my-jobs/employer/edit/${job._id}`} className='px-4 py-2 rounded bg-blue-600 flex items-center gap-2 text-white z-20'>
+                                <FaRegEdit className='h-5 w-5' />
+                                <span>Edit</span>
+                            </Link>
+
+                            <button className='px-4 py-2 rounded bg-red-600 flex items-center gap-2 text-white z-20'>
+                                <BsFillTrashFill className='h-5 w-5' />
+                                <span>Delete</span>
+                            </button>
+                        </div>
+                    }
             </div>
             <p><span className='text-xs text-gray-600 font-semibold'>Fixed-price</span> - <span className='text-xs text-gray-500 font-medium'>Posted on {new Date(job.createdAt).toLocaleString()}</span></p>
 

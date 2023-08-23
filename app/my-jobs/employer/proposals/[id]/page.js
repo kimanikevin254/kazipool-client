@@ -1,14 +1,34 @@
 'use client'
 
 import DashLayout from "@/components/dashboard/DashLayout";
-import { useGetProposalQuery } from "@/redux/slice/proposal/proposalApiSlice";
+import { useAcceptProposalMutation, useGetProposalQuery } from "@/redux/slice/proposal/proposalApiSlice";
 import Link from "next/link";
 import { AiOutlineStop } from "react-icons/ai";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { ClipLoader } from "react-spinners";
+import { toast } from "react-toastify";
 
 export default function ProposalDetailsPage({ params }){
     const { data, isLoading, error } = useGetProposalQuery(params.id)
+
+    const [acceptProposal, { isLoading: isAcceptProposalLoading }] = useAcceptProposalMutation()
+
+    const acceptFreelancerProposal = async () => {
+        try {
+            const res = await acceptProposal({
+                jobId: data.proposal.job._id,
+                userId: data.proposal.owner._id,
+                proposalId: data.proposal._id
+            }).unwrap()
+
+            console.log(res)
+
+            toast.success(res.message || 'Proposal accepted successfully.')
+        } catch (error) {
+            console.log(error)
+            toast.error(error.message || 'Unable to accept the proposal.')
+        }
+    }
 
     return (
         <DashLayout>
@@ -39,10 +59,10 @@ export default function ProposalDetailsPage({ params }){
                                                 {/* actions */}
                                                 
                                                 <div className='flex gap-3'>                                
-                                                    <Link href={'#'} className='px-4 py-2 rounded bg-blue-600 flex items-center gap-2 text-white z-20'>
+                                                    <button onClick={() => acceptFreelancerProposal()} className='px-4 py-2 rounded bg-blue-600 flex items-center gap-2 text-white z-20'>
                                                         <BsFillCheckCircleFill className='h-5 w-5' />
                                                         <span>Accept</span>
-                                                    </Link>
+                                                    </button>
 
                                                     
 
