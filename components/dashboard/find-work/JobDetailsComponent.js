@@ -41,7 +41,7 @@ export default function JobDetailsComponent({ data }){
                 <div className="py-3 mt-1">
                     <h4 className="font-semibold">Activity on the job</h4>
                     <div className="mt-1">
-                        <p className="text-gray-500"><span>Proposals: </span><span>20 to 50</span></p>
+                        <p className="text-gray-500"><span>Proposals: </span><span>{data.job.proposals.length}</span></p>
                     </div>
                 </div>
             </div>

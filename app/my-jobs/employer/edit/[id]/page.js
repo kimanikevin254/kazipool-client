@@ -78,13 +78,13 @@ export default function EmployerEditJob({ params }){
     useEffect(() => {
         if(data){
             setValues({
-                title: data.job.title,
-                type: data.job.type,
-                compensation: data.job.compensation,
-                category: data.job.category.title,
-                description: data.job.description,
-                skill_level: data.job.skill_level,
-                skills: data.job.skills.toString()
+                title: data?.job?.title,
+                type: data?.job?.type,
+                compensation: data?.job?.compensation,
+                category: data?.job?.category?.title,
+                description: data?.job?.description,
+                skill_level: data?.job?.skill_level,
+                skills: data?.job?.skills.toString()
             })
         }
     }, [data])

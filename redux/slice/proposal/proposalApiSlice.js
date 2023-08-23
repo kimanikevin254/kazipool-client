@@ -1,6 +1,6 @@
 import { apiSlice } from "../apiSlice";
 
-const PROPOSAL_URL = '/jobs/create_proposal'
+const PROPOSAL_URL = '/proposals'
 
 export const proposalApiSlice = apiSlice.injectEndpoints({
     overrideExisting: true,
@@ -13,8 +13,22 @@ export const proposalApiSlice = apiSlice.injectEndpoints({
                 credentials: 'include'
             })
         }),
+        getJobProposals: builder.query({
+            query: (data) => ({
+                url: `${PROPOSAL_URL}/${data}`,
+                credentials: 'include',
+            }),
+            keepUnusedDataFor: 1
+        }),
+        getProposal: builder.query({
+            query: (data) => ({
+                url: `${PROPOSAL_URL}/proposal/${data}`,
+                credentials: 'include',
+            }),
+            keepUnusedDataFor: 1
+        })
     })
 })
 
-export const { useCreateProposalMutation } = proposalApiSlice
+export const { useCreateProposalMutation, useGetJobProposalsQuery, useGetProposalQuery } = proposalApiSlice
 
